@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GooglePlaces</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu">Menu</string>
+    
+    <string name="os_nova">OS Nova</string>
+    <string name="rota_sendo_calculada">Rotas sendo calculadas...</string>
+    <string name="os_aberta">OS Aberta</string>
+    <string name="os_incompleta">OS Incompleta</string>
+    
+    <string name="dur">Dur:</string>
+    <string name="dist">Dist:</string>
+    
+    <string name="google_direction">API Google Directions</string>
+    <string name="google_places">API Google Places</string>
+    
+
+</resources>
