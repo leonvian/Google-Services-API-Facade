@@ -5,10 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu">Menu</string>
-    
-   
-    
-    
+     
     <string name="falha_conectar_servidor">Falha ao conectar ao servidor.</string>
     <string name="falha_ao_serializar">Falha ao desserializar o JSON recebido pelo servidor.</string>
     
