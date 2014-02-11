@@ -3,7 +3,9 @@ package br.com.lvc.googleplaces.facade;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import android.util.Log;
 import br.com.lvc.googleplaces.connection.HttpConnectionException;
@@ -14,11 +16,21 @@ import br.com.lvc.googleplaces.model.place.ResultPlaceRequest;
 
 import com.google.android.gms.maps.model.LatLng;
 
+
+/**
+ * 
+ * Facade to connect with Google Services API.
+ * 
+ * https://developers.google.com/maps/documentation/directions/
+ * 
+ * @author Leonardo Casasanta
+ *
+ */
 public class GoogleServicesFacade extends WebServiceComun {
 
-	public static final String URL_PLACES_API = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"; // Lista locais pertinentes próximos a uma localização
-	public static final String URL_DIRECTIONS_API = "https://maps.googleapis.com/maps/api/directions/json?"; // Consegue traçar rotas entre varios pontos	 
-	public static final String URL_GEOCODE_API = "http://maps.googleapis.com/maps/api/geocode/json?"; // Permite saber uma localização com base em um endereço
+	public static final String URL_PLACES_API = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"; // Lista locais pertinentes prÔøΩximos a uma localizaÔøΩÔøΩo
+	public static final String URL_DIRECTIONS_API = "https://maps.googleapis.com/maps/api/directions/json?"; // Consegue traÔøΩar rotas entre varios pontos	 
+	public static final String URL_GEOCODE_API = "http://maps.googleapis.com/maps/api/geocode/json?"; // Permite saber uma localizaÔøΩÔøΩo com base em um endereÔøΩo
 
 	private static GoogleServicesFacade instance;
 
@@ -52,7 +64,7 @@ public class GoogleServicesFacade extends WebServiceComun {
 
 	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, String destination, List<LatLng> latLngs) throws HttpConnectionException {
 		List<String> wayPoints = toListString(latLngs);
-		String url = generateURLDirection(latLngToString(origin), prepareDestinationString(destination),wayPoints);
+		String url = generateURLDirection(latLngToString(origin), prepareDestinationString(destination),wayPoints, null);
 		ResultDirectionRequest result = sendDataGet(url, ResultDirectionRequest.class);
 
 		return result;
@@ -60,7 +72,23 @@ public class GoogleServicesFacade extends WebServiceComun {
 
 	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, LatLng destination, List<LatLng> latLngs) throws HttpConnectionException {
 		List<String> wayPoints = toListString(latLngs);
-		String url = generateURLDirection(latLngToString(origin), latLngToString(destination),wayPoints);
+		String url = generateURLDirection(latLngToString(origin), latLngToString(destination),wayPoints, null);
+		ResultDirectionRequest result = sendDataGet(url, ResultDirectionRequest.class);
+
+		return result;
+	}
+	
+	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, String destination, List<LatLng> latLngs, HashMap<String, String> optionalParameters) throws HttpConnectionException {
+		List<String> wayPoints = toListString(latLngs);
+		String url = generateURLDirection(latLngToString(origin), prepareDestinationString(destination),wayPoints, optionalParameters);
+		ResultDirectionRequest result = sendDataGet(url, ResultDirectionRequest.class);
+
+		return result;
+	}
+
+	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, LatLng destination, List<LatLng> latLngs, HashMap<String, String> optionalParameters) throws HttpConnectionException {
+		List<String> wayPoints = toListString(latLngs);
+		String url = generateURLDirection(latLngToString(origin), latLngToString(destination),wayPoints, optionalParameters);
 		ResultDirectionRequest result = sendDataGet(url, ResultDirectionRequest.class);
 
 		return result;
@@ -82,8 +110,13 @@ public class GoogleServicesFacade extends WebServiceComun {
 	}
 
 	public ResultDirectionRequest requestWayToGoToDestiny(String origin, String destination, List<LatLng> latLngs) throws HttpConnectionException {
+		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, latLngs,null);
+		return result;
+	}
+	
+	public ResultDirectionRequest requestWayToGoToDestiny(String origin, String destination, List<LatLng> latLngs, HashMap<String, String> optionalParameters) throws HttpConnectionException {
 		List<String> wayPoints = toListString(latLngs);
-		String url = generateURLDirection(prepareDestinationString(origin), prepareDestinationString(destination), wayPoints);
+		String url = generateURLDirection(prepareDestinationString(origin), prepareDestinationString(destination), wayPoints, optionalParameters);
 		ResultDirectionRequest result = sendDataGet(url, ResultDirectionRequest.class);
 
 		return result;
@@ -107,7 +140,7 @@ public class GoogleServicesFacade extends WebServiceComun {
 	}
 
 
-	private String generateURLDirection(String positionOrigin, String destination, List<String> wayPoints) {
+	private String generateURLDirection(String positionOrigin, String destination, List<String> wayPoints, HashMap<String, String> optionalParameters) {
 		StringBuilder stringBuilder = new StringBuilder();
 
 		stringBuilder.append("origin=" + positionOrigin);
@@ -129,12 +162,26 @@ public class GoogleServicesFacade extends WebServiceComun {
 
 		stringBuilder.append("&");
 		stringBuilder.append("unit=metric");
+		
+		if(optionalParameters != null) {
+			Set<String> parametersName = optionalParameters.keySet();
+			for(String parameterName : parametersName) {
+				stringBuilder.append("&");
+				stringBuilder.append(parameterName);
+				stringBuilder.append("=");
+				String parameterKey = optionalParameters.get(parameterName);
+				stringBuilder.append(parameterKey);
+			}
+		}
+			
 
 		String url =  stringBuilder.toString();
 		String novaURL = URL_DIRECTIONS_API.concat(url);
 		Log.i("URL FINAL", "url: " + novaURL);
 		return novaURL;
 	}
+	
+	
 
 	private String latLngToString(LatLng latLng) {
 		String lat = String.valueOf(latLng.latitude);
