@@ -61,7 +61,41 @@ public class GoogleServicesFacade extends WebServiceComun {
 		return result;
 	}
 
+	public ResultDirectionRequest requestWayToGoToDestiny(String origin, String destination) throws HttpConnectionException { 
+		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, null, null);
+		return result;
+	}
+	
+	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, String destination ) throws HttpConnectionException {
+		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, null, null);
+		return result;
+	}
 
+	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, LatLng destination ) throws HttpConnectionException {
+		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, null, null);
+		return result;
+	}
+
+	public ResultDirectionRequest requestWayToGoToDestiny(String origin, String destination, List<LatLng> latLngs) throws HttpConnectionException {
+		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, latLngs,null);
+		return result;
+	}
+	
+	public ResultDirectionRequest requestWayToGoToDestiny(String origin, String destination,HashMap<String, String> optionalParameters) throws HttpConnectionException { 
+		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, null, optionalParameters);
+		return result;
+	}
+	
+	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, String destination,HashMap<String, String> optionalParameters) throws HttpConnectionException {
+		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, null, optionalParameters);
+		return result;
+	}
+
+	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, LatLng destination,HashMap<String, String> optionalParameters) throws HttpConnectionException {
+		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, null, optionalParameters);
+		return result;
+	}
+ 
 	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, String destination, List<LatLng> latLngs) throws HttpConnectionException {
 		List<String> wayPoints = toListString(latLngs);
 		String url = generateURLDirection(latLngToString(origin), prepareDestinationString(destination),wayPoints, null);
@@ -93,27 +127,7 @@ public class GoogleServicesFacade extends WebServiceComun {
 
 		return result;
 	}
-
-	public ResultDirectionRequest requestWayToGoToDestiny(String origin, String destination) throws HttpConnectionException { 
-		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, null);
-		return result;
-	}
-	
-	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, String destination ) throws HttpConnectionException {
-		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, null);
-		return result;
-	}
-
-	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, LatLng destination ) throws HttpConnectionException {
-		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, null);
-		return result;
-	}
-
-	public ResultDirectionRequest requestWayToGoToDestiny(String origin, String destination, List<LatLng> latLngs) throws HttpConnectionException {
-		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, latLngs,null);
-		return result;
-	}
-	
+ 
 	public ResultDirectionRequest requestWayToGoToDestiny(String origin, String destination, List<LatLng> latLngs, HashMap<String, String> optionalParameters) throws HttpConnectionException {
 		List<String> wayPoints = toListString(latLngs);
 		String url = generateURLDirection(prepareDestinationString(origin), prepareDestinationString(destination), wayPoints, optionalParameters);
@@ -181,8 +195,6 @@ public class GoogleServicesFacade extends WebServiceComun {
 		return novaURL;
 	}
 	
-	
-
 	private String latLngToString(LatLng latLng) {
 		String lat = String.valueOf(latLng.latitude);
 		String lng = String.valueOf(latLng.longitude);
@@ -201,5 +213,4 @@ public class GoogleServicesFacade extends WebServiceComun {
 		}
 		return result;
 	}
-
 }
