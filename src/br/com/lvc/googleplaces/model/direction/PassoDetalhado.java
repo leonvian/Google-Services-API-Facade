@@ -18,6 +18,9 @@ public class PassoDetalhado  {
 	@JsonProperty("end_location")
 	private Localizacao posicaoFinal;
 	
+	@JsonProperty("html_instructions")
+	private String instrucoes;
+	
 	@JsonProperty("start_location")
 	private Localizacao posicaoInicial; 
 	
@@ -28,6 +31,14 @@ public class PassoDetalhado  {
 	
 	public PassoDetalhado() {
 	
+	}
+	
+	public String getInstrucoes() {
+		return instrucoes;
+	}
+	
+	public void setInstrucoes(String instrucoes) {
+		this.instrucoes = instrucoes;
 	}
 
 	public String getTipoViagem() {
@@ -85,7 +96,13 @@ public class PassoDetalhado  {
 	public void setDicaDirecao(String dicaDirecao) {
 		this.dicaDirecao = dicaDirecao;
 	}
-	
- 
-	 
+
+	@Override
+	public String toString() {
+		return "PassoDetalhado [distancia=" + distancia + ", duracao="
+				+ duracao + ", tipoViagem=" + tipoViagem + ", posicaoFinal="
+				+ posicaoFinal + ", instrucoes=" + instrucoes
+				+ ", posicaoInicial=" + posicaoInicial + ", polyline="
+				+ polyline + ", dicaDirecao=" + dicaDirecao + "]";
+	}
 }
