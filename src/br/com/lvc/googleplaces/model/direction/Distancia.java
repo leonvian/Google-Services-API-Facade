@@ -26,7 +26,9 @@ public class Distancia {
 		this.value = value;
 	}
 	 
-	 
-	 
+	 @Override
+	public String toString() {
+		return text;
+	 }
 
 }

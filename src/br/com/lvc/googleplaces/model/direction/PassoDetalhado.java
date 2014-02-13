@@ -2,6 +2,7 @@ package br.com.lvc.googleplaces.model.direction;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
+import android.text.Html;
 import br.com.lvc.googleplaces.model.Localizacao;
 
 public class PassoDetalhado  {
@@ -99,10 +100,7 @@ public class PassoDetalhado  {
 
 	@Override
 	public String toString() {
-		return "PassoDetalhado [distancia=" + distancia + ", duracao="
-				+ duracao + ", tipoViagem=" + tipoViagem + ", posicaoFinal="
-				+ posicaoFinal + ", instrucoes=" + instrucoes
-				+ ", posicaoInicial=" + posicaoInicial + ", polyline="
-				+ polyline + ", dicaDirecao=" + dicaDirecao + "]";
+		return instrucoes;
 	}
 }
+

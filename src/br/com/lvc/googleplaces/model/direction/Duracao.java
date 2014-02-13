@@ -25,6 +25,8 @@ public class Duracao {
 		this.value = value;
 	}
 	 
-	 
-	 
+	 @Override
+	public String toString() {
+		return text;
+	}	 
 }

@@ -8,32 +8,32 @@ import br.com.lvc.googleplaces.model.Localizacao;
 
 public class PassoGeral {
 
-	
+	private static final String BROKE_LINE = "<BR />";
 	/*
-	 * end_address: "Avenida Brasil, 1334 - Regi‹o da Nossa Senhora da Boa, Belo Horizonte - Minas Gerais, 30140-003, Brazil"
+	 * end_address: "Avenida Brasil, 1334 - Regiï¿½o da Nossa Senhora da Boa, Belo Horizonte - Minas Gerais, 30140-003, Brazil"
 	 */
 
 	@JsonProperty("distance")
 	private Distancia distancia;
-	
+
 	@JsonProperty("duration")
 	private Duracao duracao;
-	
+
 	@JsonProperty("end_address")
 	private String enderecoFinal;
-	
+
 	@JsonProperty("start_address")
 	private String enderecoInicial; 
-	
+
 	@JsonProperty("end_location")
 	private Localizacao posicaoFinal;
-	
+
 	@JsonProperty("start_location")
 	private Localizacao posicaoInicial; 
-	
+
 	@JsonProperty("steps")
 	private List<PassoDetalhado> passosDetalhados;
-	
+
 	public PassoGeral() {
 	}
 
@@ -92,8 +92,48 @@ public class PassoGeral {
 	public void setPassosDetalhados(List<PassoDetalhado> passosDetalhados) {
 		this.passosDetalhados = passosDetalhados;
 	}
-	
-	
-	
-	 
+
+
+	public String getOverViewStep() {
+		String toString = getOverViewStep(null, null);
+		return toString;
+	}
+
+	public String getOverViewStep(String durationLabel, String distanceLabel) {
+		StringBuilder stringBuilder = new StringBuilder();
+		
+		stringBuilder.append(BROKE_LINE);
+		if(distanceLabel != null) {
+			stringBuilder.append(distanceLabel);
+			stringBuilder.append(" ");
+		}
+		
+		stringBuilder.append(getDistancia());
+		stringBuilder.append(BROKE_LINE );
+		if(durationLabel != null) {
+			stringBuilder.append(durationLabel);
+			stringBuilder.append(" ");	
+		}
+		
+		stringBuilder.append(getDuracao());
+		stringBuilder.append( BROKE_LINE );
+
+		for(PassoDetalhado passoDetalhado : passosDetalhados) {
+			stringBuilder.append( BROKE_LINE );
+			stringBuilder.append(passoDetalhado.toString());
+		}
+
+		String toString = stringBuilder.toString();
+		return toString;
+	}
+
+	@Override
+	public String toString() {
+
+		String toString = getOverViewStep();
+		return toString;
+	}
+
+
+
 }
