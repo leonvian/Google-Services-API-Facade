@@ -87,17 +87,21 @@ public class Rota {
 		return overview;
 	}
 
-	public String overviewRoute() {
+	public String overviewRoute(String durationLabel, String distanceLabel) {
 		StringBuilder stringBuilder = new StringBuilder();
 
 		for(PassoGeral passoGeral : passosGerais) {
 			stringBuilder.append(BROKE_LINE);
-			stringBuilder.append(passoGeral.toString());
+			stringBuilder.append(passoGeral.getOverViewStep(durationLabel, distanceLabel));
 			stringBuilder.append(BROKE_LINE);
 		}
 
 		String overview = stringBuilder.toString();
 		return overview;
+	}
+	
+	public String overviewRoute() {
+		return overviewRoute(null, null);
 	}
 
 	@Override
