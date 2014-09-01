@@ -22,9 +22,19 @@ public class Rota {
 
 	@JsonProperty("overview_polyline")
 	private OverviewPolyline overviewPolyline; 
+	
+	@JsonProperty("waypoint_order")
+	private List<Integer> waypointOrder;
 
 	public Rota() {
-
+	}
+	
+	public List<Integer> getWaypointOrder() {
+		return waypointOrder;
+	}
+	
+	public void setWaypointOrder(List<Integer> waypointOrder) {
+		this.waypointOrder = waypointOrder;
 	}
 
 	public List<PassoGeral> getPassosGerais() {
