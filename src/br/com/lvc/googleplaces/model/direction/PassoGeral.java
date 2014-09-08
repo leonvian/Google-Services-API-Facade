@@ -1,13 +1,16 @@
 package br.com.lvc.googleplaces.model.direction;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
 import br.com.lvc.googleplaces.model.Localizacao;
 
-public class PassoGeral {
+public class PassoGeral implements Serializable  {
 
+	 
+	private static final long serialVersionUID = 2340937842447327805L;
 	private static final String BROKE_LINE = "<BR />";
 	/*
 	 * end_address: "Avenida Brasil, 1334 - Regi�o da Nossa Senhora da Boa, Belo Horizonte - Minas Gerais, 30140-003, Brazil"

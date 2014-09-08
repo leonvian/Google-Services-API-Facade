@@ -1,10 +1,16 @@
 package br.com.lvc.googleplaces.model.geocode;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
-public class ResultRequestGeocode {
+public class ResultRequestGeocode implements Serializable  {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5880262411548686612L;
 
 	@JsonProperty("address_components")
 	private List<Endereco> enderecos;

@@ -1,11 +1,16 @@
 package br.com.lvc.googleplaces.model.geocode;
 
+import java.io.Serializable;
+
 import org.codehaus.jackson.annotate.JsonProperty;
 
 import br.com.lvc.googleplaces.model.Localizacao;
 
-public class LocalizacaoInfo {
+public class LocalizacaoInfo implements Serializable  {
 	
+	 
+	private static final long serialVersionUID = -439437324601153968L;
+
 	@JsonProperty("location_type")
 	private String tipoLocalizaoca;
 	

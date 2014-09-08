@@ -1,10 +1,14 @@
 package br.com.lvc.googleplaces.model.geocode;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
-public class Endereco {
+public class Endereco implements Serializable  {
+
+	
+	private static final long serialVersionUID = 7531332176742227402L;
 
 	/*
 	 * "long_name" : "1600",

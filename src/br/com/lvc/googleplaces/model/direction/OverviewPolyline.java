@@ -1,13 +1,18 @@
 package br.com.lvc.googleplaces.model.direction;
 
+import java.io.Serializable;
 import java.util.List;
 
 import br.com.lvc.googleplaces.utils.PolyDecoder;
 
 import com.google.android.gms.maps.model.LatLng;
 
-public class OverviewPolyline {
+public class OverviewPolyline implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3660035078215303743L;
 	private String points;
 
 	public OverviewPolyline() {

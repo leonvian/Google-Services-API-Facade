@@ -1,9 +1,13 @@
 package br.com.lvc.googleplaces.model;
 
+import java.io.Serializable;
+
 import com.google.android.gms.maps.model.LatLng;
 
-public class Localizacao {
+public class Localizacao implements Serializable {
 
+	 
+	private static final long serialVersionUID = 5211318669743317046L;
 	private double lat;
 	private double lng;
 

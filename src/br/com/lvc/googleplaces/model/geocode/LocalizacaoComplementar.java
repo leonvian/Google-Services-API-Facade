@@ -1,12 +1,17 @@
 package br.com.lvc.googleplaces.model.geocode;
 
+import java.io.Serializable;
+
 import org.codehaus.jackson.annotate.JsonProperty;
 
 import br.com.lvc.googleplaces.model.Localizacao;
 
-public class LocalizacaoComplementar {
+public class LocalizacaoComplementar implements Serializable  {
 
- /*
+ 
+	private static final long serialVersionUID = -4065080334252012333L;
+
+/*
   * "" : {
                "northeast" : {
                   "lat" : 37.42426708029149,
@@ -24,6 +29,27 @@ public class LocalizacaoComplementar {
 	
 	@JsonProperty("southwest")
 	private Localizacao localizacaoSul;
+	
+	public LocalizacaoComplementar() {
+	}
+
+	public Localizacao getLocalizacaoNorte() {
+		return localizacaoNorte;
+	}
+
+	public void setLocalizacaoNorte(Localizacao localizacaoNorte) {
+		this.localizacaoNorte = localizacaoNorte;
+	}
+
+	public Localizacao getLocalizacaoSul() {
+		return localizacaoSul;
+	}
+
+	public void setLocalizacaoSul(Localizacao localizacaoSul) {
+		this.localizacaoSul = localizacaoSul;
+	}
+	
+	
 	
 
 }

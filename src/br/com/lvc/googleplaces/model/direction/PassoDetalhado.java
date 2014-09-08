@@ -1,12 +1,18 @@
 package br.com.lvc.googleplaces.model.direction;
 
+import java.io.Serializable;
+
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import android.text.Html;
 import br.com.lvc.googleplaces.model.Localizacao;
 
-public class PassoDetalhado  {
+public class PassoDetalhado  implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8764240219467413068L;
+
 	@JsonProperty("distance")
 	private Distancia distancia;
 	

@@ -1,10 +1,13 @@
 package br.com.lvc.googleplaces.model.geocode;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ResultCompleteGeocode {
+public class ResultCompleteGeocode implements Serializable  {
 
-	 private List<ResultRequestGeocode> results;
+	 
+	private static final long serialVersionUID = 1401587268774606206L;
+	private List<ResultRequestGeocode> results;
 	 private String status;
 	 
 	 public ResultCompleteGeocode() {

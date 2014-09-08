@@ -1,8 +1,10 @@
 package br.com.lvc.googleplaces.model.place;
 
+import java.io.Serializable;
+
 import org.codehaus.jackson.annotate.JsonProperty;
 
-public class Foto {
+public class Foto implements Serializable  {
  
 	/*
 	 * height: 645
@@ -11,6 +13,10 @@ photo_reference: "CnRrAAAAyjq3Md88NjzHuEDEX8amt0asJiIUXAI3O2NIGTup6EQ3zjJ4ZOlbE7
 width: 1024
 	 */
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8684913959727205129L;
 	private int height;
 	private int width;
 	@JsonProperty("photo_reference")

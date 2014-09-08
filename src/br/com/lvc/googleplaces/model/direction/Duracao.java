@@ -1,9 +1,15 @@
 package br.com.lvc.googleplaces.model.direction;
 
-public class Duracao {
+import java.io.Serializable;
+
+public class Duracao implements Serializable {
 
 
-	 private String text;
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4270507850682320805L;
+	private String text;
 	 private int value;
 	 
 	 public Duracao() {

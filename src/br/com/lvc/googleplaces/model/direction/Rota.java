@@ -1,13 +1,16 @@
 package br.com.lvc.googleplaces.model.direction;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-public class Rota {
+public class Rota implements Serializable {
 
 
+	 
+	private static final long serialVersionUID = 2923948159659493474L;
 	private static final String BROKE_LINE = "<BR />";
 	private static final String TRACE = " - ";
 

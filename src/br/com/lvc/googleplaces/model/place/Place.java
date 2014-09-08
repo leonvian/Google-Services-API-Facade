@@ -1,10 +1,15 @@
 package br.com.lvc.googleplaces.model.place;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Place {
+public class Place implements Serializable  {
  
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1695941112108096491L;
 	/*
 	 * icon: "http://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
 id: "c71365287e7606bd21a3311d21fda087830b7813"
@@ -17,7 +22,7 @@ name: "Pancakes on the Rocks"
 	private String name;
 	private String reference;
 	private List<String> types;
-	private String vicinity; // Vizinhança
+	private String vicinity; // VizinhanÔøΩa
 	private Geometria geometry;
 	private List<Foto> photos;
 	
