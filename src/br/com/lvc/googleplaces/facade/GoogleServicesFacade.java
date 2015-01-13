@@ -5,15 +5,26 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import android.content.Context;
 import android.util.Log;
+import br.com.lvc.googleplaces.connection.DataSerializer;
 import br.com.lvc.googleplaces.connection.HttpConnectionException;
 import br.com.lvc.googleplaces.connection.WebServiceComun;
 import br.com.lvc.googleplaces.model.direction.ResultDirectionRequest;
 import br.com.lvc.googleplaces.model.geocode.ResultCompleteGeocode;
 import br.com.lvc.googleplaces.model.place.ResultPlaceRequest;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.Response.ErrorListener;
+import com.android.volley.Response.Listener;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.maps.model.LatLng;
 
 
@@ -26,7 +37,7 @@ import com.google.android.gms.maps.model.LatLng;
  * @author Leonardo Casasanta
  *
  */
-public class GoogleServicesFacade extends WebServiceComun {
+public class GoogleServicesFacade /*extends WebServiceComun */ {
 
 	public static final String URL_PLACES_API = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"; // Lista locais pertinentes pr�ximos a uma localiza��o
 	public static final String URL_DIRECTIONS_API = "https://maps.googleapis.com/maps/api/directions/json?"; // Consegue tra�ar rotas entre varios pontos	 
@@ -47,100 +58,84 @@ public class GoogleServicesFacade extends WebServiceComun {
 	 * @return
 	 * @throws HttpConnectionException
 	 */
-	public ResultCompleteGeocode requestLocationByAddress(String address, String region) throws HttpConnectionException {
+	public void requestLocationByAddress(Context context, String address, String region, HttpResponseListener<ResultCompleteGeocode> responseListener)  {
 		String preparedAddres = prepareDestinationString(address);
-		String url = URL_GEOCODE_API.concat("address=" + preparedAddres + "&sensor=true&region=" + region);
-		ResultCompleteGeocode result = sendDataGet(url, ResultCompleteGeocode.class);
-		return result;
+		String url = URL_GEOCODE_API.concat("address=" + preparedAddres + "&sensor=true&region=" + region);  
+		sendDataGet(context, url, ResultCompleteGeocode.class,responseListener);
+
 	}
 
-	public ResultPlaceRequest requestPlacesNearLocation(LatLng positionTarget, int radius, String key) throws HttpConnectionException {
+	public void requestPlacesNearLocation(Context context, LatLng positionTarget, int radius, String key, HttpResponseListener<ResultPlaceRequest> responseListener)  {
 		String latLngString = latLngToString(positionTarget);
 		String url = URL_PLACES_API.concat("location=" + latLngString +"&radius="+ radius +"&sensor=true&key=" + key);
-		ResultPlaceRequest result = sendDataGet(url, ResultPlaceRequest.class);
-		return result;
+		sendDataGet(context, url, ResultPlaceRequest.class, responseListener);
 	}
 
-	public ResultDirectionRequest requestWayToGoToDestiny(String origin, String destination) throws HttpConnectionException { 
-		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, null, null);
-		return result;
-	}
-	
-	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, String destination ) throws HttpConnectionException {
-		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, null, null);
-		return result;
+	public void requestWayToGoToDestiny(Context context, String origin, String destination, HttpResponseListener<ResultDirectionRequest> httpResponseListener) { 
+		requestWayToGoToDestiny(context,origin,destination, null, null,httpResponseListener);
 	}
 
-	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, LatLng destination ) throws HttpConnectionException {
-		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, null, null);
-		return result;
+	public void requestWayToGoToDestiny(Context context, LatLng origin, String destination,HttpResponseListener<ResultDirectionRequest> httpResponseListener )   {
+		requestWayToGoToDestiny(context,origin,destination, null, null,httpResponseListener);
 	}
 
-	public ResultDirectionRequest requestWayToGoToDestiny(String origin, String destination, List<LatLng> latLngs) throws HttpConnectionException {
-		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, latLngs,null);
-		return result;
-	}
-	
-	public ResultDirectionRequest requestWayToGoToDestiny(String origin, String destination,HashMap<String, String> optionalParameters) throws HttpConnectionException { 
-		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, null, optionalParameters);
-		return result;
-	}
-	
-	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, String destination,HashMap<String, String> optionalParameters) throws HttpConnectionException {
-		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, null, optionalParameters);
-		return result;
+	public void requestWayToGoToDestiny(Context context, LatLng origin, LatLng destination,HttpResponseListener<ResultDirectionRequest> httpResponseListener ) {
+		requestWayToGoToDestiny(context,origin,destination, null, null,httpResponseListener);
 	}
 
-	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, LatLng destination,HashMap<String, String> optionalParameters) throws HttpConnectionException {
-		ResultDirectionRequest result = requestWayToGoToDestiny(origin,destination, null, optionalParameters);
-		return result;
+	public void requestWayToGoToDestiny(Context context,String origin, String destination, List<LatLng> latLngs,HttpResponseListener<ResultDirectionRequest> httpResponseListener) {
+		requestWayToGoToDestiny(context,origin,destination, latLngs,null,httpResponseListener);
 	}
- 
-	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, String destination, List<LatLng> latLngs) throws HttpConnectionException {
+
+	public void requestWayToGoToDestiny(Context context,String origin, String destination,HashMap<String, String> optionalParameters,HttpResponseListener<ResultDirectionRequest> httpResponseListener)  { 
+		requestWayToGoToDestiny(context,origin,destination, null, optionalParameters,httpResponseListener);
+	}
+
+	public void requestWayToGoToDestiny(Context context,LatLng origin, String destination,HashMap<String, String> optionalParameters,HttpResponseListener<ResultDirectionRequest> httpResponseListener)  {
+		requestWayToGoToDestiny(context,origin,destination, null, optionalParameters,httpResponseListener); 
+	}
+
+	public void requestWayToGoToDestiny(Context context,LatLng origin, LatLng destination,HashMap<String, String> optionalParameters,HttpResponseListener<ResultDirectionRequest> httpResponseListener)  {
+		requestWayToGoToDestiny(context,origin,destination, null, optionalParameters,httpResponseListener);
+
+	}
+
+	public void requestWayToGoToDestiny(Context context, LatLng origin, String destination, List<LatLng> latLngs, HttpResponseListener<ResultDirectionRequest> responseListener) {
 		List<String> wayPoints = toListString(latLngs);
 		String url = generateURLDirection(latLngToString(origin), prepareDestinationString(destination),wayPoints, null);
-		ResultDirectionRequest result = sendDataGet(url, ResultDirectionRequest.class);
-
-		return result;
+		sendDataGet(context, url, ResultDirectionRequest.class, responseListener);		
 	}
 
-	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, LatLng destination, List<LatLng> latLngs) throws HttpConnectionException {
+	public void requestWayToGoToDestiny(Context context, LatLng origin, LatLng destination, List<LatLng> latLngs, HttpResponseListener<ResultDirectionRequest> httpResponseListener) throws HttpConnectionException {
 		List<String> wayPoints = toListString(latLngs);
 		String url = generateURLDirection(latLngToString(origin), latLngToString(destination),wayPoints, null);
-		ResultDirectionRequest result = sendDataGet(url, ResultDirectionRequest.class);
-
-		return result;
+		sendDataGet(context, url, ResultDirectionRequest.class,httpResponseListener);
 	}
-	
-	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, String destination, List<LatLng> latLngs, HashMap<String, String> optionalParameters) throws HttpConnectionException {
+
+	public void requestWayToGoToDestiny(Context context, LatLng origin, String destination, List<LatLng> latLngs, HashMap<String, String> optionalParameters, HttpResponseListener<ResultDirectionRequest> httpListener) {
 		List<String> wayPoints = toListString(latLngs);
 		String url = generateURLDirection(latLngToString(origin), prepareDestinationString(destination),wayPoints, optionalParameters);
-		ResultDirectionRequest result = sendDataGet(url, ResultDirectionRequest.class);
+		sendDataGet(context, url, ResultDirectionRequest.class, httpListener);
 
-		return result;
 	}
 
-	public ResultDirectionRequest requestWayToGoToDestiny(LatLng origin, LatLng destination, List<LatLng> latLngs, HashMap<String, String> optionalParameters) throws HttpConnectionException {
+	public void requestWayToGoToDestiny(Context context, LatLng origin, LatLng destination, List<LatLng> latLngs, HashMap<String, String> optionalParameters,  HttpResponseListener<ResultDirectionRequest> httpListener)   {
 		List<String> wayPoints = toListString(latLngs);
 		String url = generateURLDirection(latLngToString(origin), latLngToString(destination),wayPoints, optionalParameters);
-		ResultDirectionRequest result = sendDataGet(url, ResultDirectionRequest.class);
-
-		return result;
+		sendDataGet(context, url, ResultDirectionRequest.class, httpListener);
 	}
- 
-	public ResultDirectionRequest requestWayToGoToDestiny(String origin, String destination, List<LatLng> latLngs, HashMap<String, String> optionalParameters) throws HttpConnectionException {
+
+	public void requestWayToGoToDestiny(Context context, String origin, String destination, List<LatLng> latLngs, HashMap<String, String> optionalParameters, HttpResponseListener<ResultDirectionRequest> httpResponseListener)   {
 		List<String> wayPoints = toListString(latLngs);
 		String url = generateURLDirection(prepareDestinationString(origin), prepareDestinationString(destination), wayPoints, optionalParameters);
-		ResultDirectionRequest result = sendDataGet(url, ResultDirectionRequest.class);
-
-		return result;
+		sendDataGet(context, url, ResultDirectionRequest.class, httpResponseListener);		
 	}
 
 	private List<String> toListString(List<LatLng> latLngs) {
 		List<String> wayPoints = new ArrayList<String>();
 		if(latLngs == null)
 			return wayPoints;
-		
+
 		for(LatLng latLng : latLngs) {
 			String wayPoint = latLngToString(latLng);
 			wayPoints.add(wayPoint);
@@ -176,7 +171,7 @@ public class GoogleServicesFacade extends WebServiceComun {
 
 		stringBuilder.append("&");
 		stringBuilder.append("unit=metric");
-		
+
 		if(optionalParameters != null) {
 			Set<String> parametersName = optionalParameters.keySet();
 			for(String parameterName : parametersName) {
@@ -187,14 +182,14 @@ public class GoogleServicesFacade extends WebServiceComun {
 				stringBuilder.append(parameterKey);
 			}
 		}
-			
+
 
 		String url =  stringBuilder.toString();
 		String novaURL = URL_DIRECTIONS_API.concat(url);
 		Log.i("URL FINAL", "url: " + novaURL);
 		return novaURL;
 	}
-	
+
 	private String latLngToString(LatLng latLng) {
 		String lat = String.valueOf(latLng.latitude);
 		String lng = String.valueOf(latLng.longitude);
@@ -213,4 +208,54 @@ public class GoogleServicesFacade extends WebServiceComun {
 		}
 		return result;
 	}
+
+
+	private <T>void sendDataGet(Context context, String url, final Class<T> target, final HttpResponseListener<T> responseListener) {
+		RequestQueue queue =  HttpQueueController.getInstance().getQueue(context);
+		Listener<String>  sucessListener = new Response.Listener<String>() {
+
+			@Override
+			public void onResponse(String reponse) {
+				try {
+					T data = DataSerializer.getInstance().toObject(reponse, target);
+					responseListener.sucess(data);
+				} catch (HttpConnectionException e) { 
+					e.printStackTrace();
+					responseListener.error("Fail to serialize!");
+				}
+			}
+		};
+
+		ErrorListener errorListener = new Response.ErrorListener() {
+
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				responseListener.error(error.getMessage());
+			}
+		};
+
+		StringRequestGET stringRequestGET = new StringRequestGET(url, sucessListener, errorListener);
+		queue.add(stringRequestGET);
+
+	}
+
+	private class StringRequestGET extends StringRequest {
+
+		public StringRequestGET(String url, Listener<String> listener, ErrorListener errorListener) {
+			super(Request.Method.GET, url, listener, errorListener); 
+		}
+
+		@Override
+		protected Map<String, String> getParams() throws AuthFailureError {
+			return super.getParams();
+		}
+
+		@Override
+		public Map<String, String> getHeaders() throws AuthFailureError {
+			Map<String, String> headers = new HashMap<String, String>(); 
+			return headers;
+		}
+
+	}
+
 }

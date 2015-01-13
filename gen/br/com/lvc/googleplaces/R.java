@@ -186,8 +186,8 @@ containing a value of this type.
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static int activity_horizontal_margin=0x7f070000;
-        public static int activity_vertical_margin=0x7f070001;
+        public static int activity_horizontal_margin=0x7f060000;
+        public static int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
         public static int boneco=0x7f020000;
@@ -227,123 +227,123 @@ containing a value of this type.
         public static int os_read=0x7f020022;
     }
     public static final class id {
-        public static int action_settings=0x7f040005;
-        public static int hybrid=0x7f040004;
-        public static int none=0x7f040000;
-        public static int normal=0x7f040001;
-        public static int satellite=0x7f040002;
-        public static int terrain=0x7f040003;
+        public static int action_settings=0x7f090005;
+        public static int hybrid=0x7f090000;
+        public static int none=0x7f090001;
+        public static int normal=0x7f090002;
+        public static int satellite=0x7f090003;
+        public static int terrain=0x7f090004;
     }
     public static final class integer {
-        public static int google_play_services_version=0x7f060000;
+        public static int google_play_services_version=0x7f050000;
     }
     public static final class menu {
-        public static int main=0x7f090000;
+        public static int main=0x7f080000;
     }
     public static final class string {
-        public static int action_settings=0x7f05001c;
-        public static int app_name=0x7f05001b;
+        public static int action_settings=0x7f04001c;
+        public static int app_name=0x7f04001b;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
          */
-        public static int auth_client_needs_enabling_title=0x7f050015;
+        public static int auth_client_needs_enabling_title=0x7f040015;
         /**   Title for notification shown when GooglePlayServices needs to be
         installed for a application to work. [CHAR LIMIT=70] 
          */
-        public static int auth_client_needs_installation_title=0x7f050016;
+        public static int auth_client_needs_installation_title=0x7f040016;
         /**   Title for notification shown when GooglePlayServices needs to be
         udpated for a application to work. [CHAR LIMIT=70] 
          */
-        public static int auth_client_needs_update_title=0x7f050017;
+        public static int auth_client_needs_update_title=0x7f040017;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=42] 
          */
-        public static int auth_client_play_services_err_notification_msg=0x7f050018;
+        public static int auth_client_play_services_err_notification_msg=0x7f040018;
         /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
          */
-        public static int auth_client_requested_by_msg=0x7f050019;
+        public static int auth_client_requested_by_msg=0x7f040019;
         /**   Title for notification shown when a bad version of GooglePlayServices
         has been installed and needs correction for an application to work.
         [CHAR LIMIT=70] 
          */
-        public static int auth_client_using_bad_version_title=0x7f050014;
+        public static int auth_client_using_bad_version_title=0x7f040014;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
          */
-        public static int common_google_play_services_enable_button=0x7f050006;
+        public static int common_google_play_services_enable_button=0x7f040006;
         /**  Message in confirmation dialog informing user they need to enable
         Google Play services in application settings [CHAR LIMIT=NONE] 
          */
-        public static int common_google_play_services_enable_text=0x7f050005;
+        public static int common_google_play_services_enable_text=0x7f040005;
         /**  Title of confirmation dialog informing user they need to enable
         Google Play services in application settings [CHAR LIMIT=40] 
          */
-        public static int common_google_play_services_enable_title=0x7f050004;
+        public static int common_google_play_services_enable_title=0x7f040004;
         /**  Button in confirmation dialog for installing Google Play services [CHAR LIMIT=40] 
          */
-        public static int common_google_play_services_install_button=0x7f050003;
+        public static int common_google_play_services_install_button=0x7f040003;
         /**  (For phones) Message in confirmation dialog informing user that
         they need to install Google Play services (from Play Store) [CHAR LIMIT=NONE] 
          */
-        public static int common_google_play_services_install_text_phone=0x7f050001;
+        public static int common_google_play_services_install_text_phone=0x7f040001;
         /**  (For tablets) Message in confirmation dialog informing user that
         they need to install Google Play services (from Play Store) [CHAR LIMIT=NONE] 
          */
-        public static int common_google_play_services_install_text_tablet=0x7f050002;
+        public static int common_google_play_services_install_text_tablet=0x7f040002;
         /**  Title of confirmation dialog informing user that they need to install
         Google Play services (from Play Store) [CHAR LIMIT=40] 
          */
-        public static int common_google_play_services_install_title=0x7f050000;
+        public static int common_google_play_services_install_title=0x7f040000;
         /**  Message in confirmation dialog informing the user that they provided an invalid account. [CHAR LIMIT=NONE] 
          */
-        public static int common_google_play_services_invalid_account_text=0x7f05000c;
+        public static int common_google_play_services_invalid_account_text=0x7f04000c;
         /**  Title of confirmation dialog informing the user that they provided an invalid account. [CHAR LIMIT=40] 
          */
-        public static int common_google_play_services_invalid_account_title=0x7f05000b;
+        public static int common_google_play_services_invalid_account_title=0x7f04000b;
         /**  Message in confirmation dialog informing the user that a network error occurred. [CHAR LIMIT=NONE] 
          */
-        public static int common_google_play_services_network_error_text=0x7f05000a;
+        public static int common_google_play_services_network_error_text=0x7f04000a;
         /**  Title of confirmation dialog informing the user that a network error occurred. [CHAR LIMIT=40] 
          */
-        public static int common_google_play_services_network_error_title=0x7f050009;
+        public static int common_google_play_services_network_error_title=0x7f040009;
         /**  Message in confirmation dialog informing user there is an unknown issue in Google Play
         services [CHAR LIMIT=NONE] 
          */
-        public static int common_google_play_services_unknown_issue=0x7f05000d;
+        public static int common_google_play_services_unknown_issue=0x7f04000d;
         /**  Message in confirmation dialog informing user that date on the device is not correct,
     causing certificate checks to fail. [CHAR LIMIT=NONE] 
          */
-        public static int common_google_play_services_unsupported_date_text=0x7f050010;
+        public static int common_google_play_services_unsupported_date_text=0x7f040010;
         /**  Message in confirmation dialog informing user that Google Play services is not supported on their device [CHAR LIMIT=NONE] 
          */
-        public static int common_google_play_services_unsupported_text=0x7f05000f;
+        public static int common_google_play_services_unsupported_text=0x7f04000f;
         /**  Title of confirmation dialog informing user that Google Play services is not supported on their device [CHAR LIMIT=40] 
          */
-        public static int common_google_play_services_unsupported_title=0x7f05000e;
+        public static int common_google_play_services_unsupported_title=0x7f04000e;
         /**  Button in confirmation dialog for updating Google Play services [CHAR LIMIT=40] 
          */
-        public static int common_google_play_services_update_button=0x7f050011;
+        public static int common_google_play_services_update_button=0x7f040011;
         /**  Message in confirmation dialog informing user that they need to update
         Google Play services (from Play Store) [CHAR LIMIT=NONE] 
          */
-        public static int common_google_play_services_update_text=0x7f050008;
+        public static int common_google_play_services_update_text=0x7f040008;
         /**  Title of confirmation dialog informing user that they need to update
         Google Play services (from Play Store) [CHAR LIMIT=40] 
          */
-        public static int common_google_play_services_update_title=0x7f050007;
+        public static int common_google_play_services_update_title=0x7f040007;
         /**  Sign-in button text [CHAR LIMIT=15] 
          */
-        public static int common_signin_button_text=0x7f050012;
+        public static int common_signin_button_text=0x7f040012;
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
-        public static int common_signin_button_text_long=0x7f050013;
-        public static int falha_ao_serializar=0x7f050020;
-        public static int falha_conectar_servidor=0x7f05001f;
-        public static int hello_world=0x7f05001d;
+        public static int common_signin_button_text_long=0x7f040013;
+        public static int falha_ao_serializar=0x7f040020;
+        public static int falha_conectar_servidor=0x7f04001f;
+        public static int hello_world=0x7f04001d;
         /**  Location client code resources (prefix with location_client) 
          */
-        public static int location_client_powered_by_google=0x7f05001a;
-        public static int menu=0x7f05001e;
+        public static int location_client_powered_by_google=0x7f04001a;
+        public static int menu=0x7f04001e;
     }
     public static final class style {
         /** 
@@ -367,11 +367,11 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static int AppBaseTheme=0x7f080000;
+        public static int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static int AppTheme=0x7f080001;
+        public static int AppTheme=0x7f070001;
     }
     public static final class styleable {
         /** Attributes that can be used with a AdsAttrs.
@@ -412,7 +412,7 @@ containing a value of this type.
           <p>This is a private symbol.
           @attr name br.com.lvc.googleplaces:adSize
         */
-        public static final int AdsAttrs_adSize = 0;
+        public static int AdsAttrs_adSize = 0;
         /**
           <p>
           @attr description
@@ -432,7 +432,7 @@ containing a value of this type.
           <p>This is a private symbol.
           @attr name br.com.lvc.googleplaces:adSizes
         */
-        public static final int AdsAttrs_adSizes = 1;
+        public static int AdsAttrs_adSizes = 1;
         /**
           <p>
           @attr description
@@ -448,7 +448,7 @@ containing a value of this type.
           <p>This is a private symbol.
           @attr name br.com.lvc.googleplaces:adUnitId
         */
-        public static final int AdsAttrs_adUnitId = 2;
+        public static int AdsAttrs_adUnitId = 2;
         /** Attributes that can be used with a MapAttrs.
            <p>Includes the following attributes:</p>
            <table>
@@ -504,7 +504,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name br.com.lvc.googleplaces:cameraBearing
         */
-        public static final int MapAttrs_cameraBearing = 1;
+        public static int MapAttrs_cameraBearing = 1;
         /**
           <p>This symbol is the offset where the {@link br.com.lvc.googleplaces.R.attr#cameraTargetLat}
           attribute's value can be found in the {@link #MapAttrs} array.
@@ -518,7 +518,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name br.com.lvc.googleplaces:cameraTargetLat
         */
-        public static final int MapAttrs_cameraTargetLat = 2;
+        public static int MapAttrs_cameraTargetLat = 2;
         /**
           <p>This symbol is the offset where the {@link br.com.lvc.googleplaces.R.attr#cameraTargetLng}
           attribute's value can be found in the {@link #MapAttrs} array.
@@ -532,7 +532,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name br.com.lvc.googleplaces:cameraTargetLng
         */
-        public static final int MapAttrs_cameraTargetLng = 3;
+        public static int MapAttrs_cameraTargetLng = 3;
         /**
           <p>This symbol is the offset where the {@link br.com.lvc.googleplaces.R.attr#cameraTilt}
           attribute's value can be found in the {@link #MapAttrs} array.
@@ -546,7 +546,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name br.com.lvc.googleplaces:cameraTilt
         */
-        public static final int MapAttrs_cameraTilt = 4;
+        public static int MapAttrs_cameraTilt = 4;
         /**
           <p>This symbol is the offset where the {@link br.com.lvc.googleplaces.R.attr#cameraZoom}
           attribute's value can be found in the {@link #MapAttrs} array.
@@ -560,7 +560,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name br.com.lvc.googleplaces:cameraZoom
         */
-        public static final int MapAttrs_cameraZoom = 5;
+        public static int MapAttrs_cameraZoom = 5;
         /**
           <p>This symbol is the offset where the {@link br.com.lvc.googleplaces.R.attr#mapType}
           attribute's value can be found in the {@link #MapAttrs} array.
@@ -580,7 +580,7 @@ containing a value of this type.
 </table>
           @attr name br.com.lvc.googleplaces:mapType
         */
-        public static final int MapAttrs_mapType = 0;
+        public static int MapAttrs_mapType = 0;
         /**
           <p>This symbol is the offset where the {@link br.com.lvc.googleplaces.R.attr#uiCompass}
           attribute's value can be found in the {@link #MapAttrs} array.
@@ -594,7 +594,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name br.com.lvc.googleplaces:uiCompass
         */
-        public static final int MapAttrs_uiCompass = 6;
+        public static int MapAttrs_uiCompass = 6;
         /**
           <p>This symbol is the offset where the {@link br.com.lvc.googleplaces.R.attr#uiRotateGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
@@ -608,7 +608,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name br.com.lvc.googleplaces:uiRotateGestures
         */
-        public static final int MapAttrs_uiRotateGestures = 7;
+        public static int MapAttrs_uiRotateGestures = 7;
         /**
           <p>This symbol is the offset where the {@link br.com.lvc.googleplaces.R.attr#uiScrollGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
@@ -622,7 +622,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name br.com.lvc.googleplaces:uiScrollGestures
         */
-        public static final int MapAttrs_uiScrollGestures = 8;
+        public static int MapAttrs_uiScrollGestures = 8;
         /**
           <p>This symbol is the offset where the {@link br.com.lvc.googleplaces.R.attr#uiTiltGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
@@ -636,7 +636,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name br.com.lvc.googleplaces:uiTiltGestures
         */
-        public static final int MapAttrs_uiTiltGestures = 9;
+        public static int MapAttrs_uiTiltGestures = 9;
         /**
           <p>This symbol is the offset where the {@link br.com.lvc.googleplaces.R.attr#uiZoomControls}
           attribute's value can be found in the {@link #MapAttrs} array.
@@ -650,7 +650,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name br.com.lvc.googleplaces:uiZoomControls
         */
-        public static final int MapAttrs_uiZoomControls = 10;
+        public static int MapAttrs_uiZoomControls = 10;
         /**
           <p>This symbol is the offset where the {@link br.com.lvc.googleplaces.R.attr#uiZoomGestures}
           attribute's value can be found in the {@link #MapAttrs} array.
@@ -664,7 +664,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name br.com.lvc.googleplaces:uiZoomGestures
         */
-        public static final int MapAttrs_uiZoomGestures = 11;
+        public static int MapAttrs_uiZoomGestures = 11;
         /**
           <p>This symbol is the offset where the {@link br.com.lvc.googleplaces.R.attr#useViewLifecycle}
           attribute's value can be found in the {@link #MapAttrs} array.
@@ -678,7 +678,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name br.com.lvc.googleplaces:useViewLifecycle
         */
-        public static final int MapAttrs_useViewLifecycle = 12;
+        public static int MapAttrs_useViewLifecycle = 12;
         /**
           <p>This symbol is the offset where the {@link br.com.lvc.googleplaces.R.attr#zOrderOnTop}
           attribute's value can be found in the {@link #MapAttrs} array.
@@ -692,6 +692,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name br.com.lvc.googleplaces:zOrderOnTop
         */
-        public static final int MapAttrs_zOrderOnTop = 13;
+        public static int MapAttrs_zOrderOnTop = 13;
     };
 }

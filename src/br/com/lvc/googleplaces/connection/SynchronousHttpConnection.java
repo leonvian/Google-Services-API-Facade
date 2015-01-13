@@ -58,10 +58,8 @@ public class SynchronousHttpConnection {
 
 	public String delete(String url) throws HttpConnectionException  {
 		return executeHTTPConnection(DELETE, url, null);
-	}
+	} 
 	
- 
-
 	public HttpResponse getHttpResponseAsReturn(String url) throws HttpConnectionException  {
 		return executeHTTPConnectionGetResponse(GET, url, null,TIME_OUT_DEFAULT);
 	}
