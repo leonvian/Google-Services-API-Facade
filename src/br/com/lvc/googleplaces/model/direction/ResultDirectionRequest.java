@@ -2,7 +2,7 @@ package br.com.lvc.googleplaces.model.direction;
 
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ResultDirectionRequest {
 

@@ -3,26 +3,49 @@ package br.com.lvc.googleplaces.connection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
-
-import br.com.lvc.googleplaces.R;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DataSerializer {
-
+	
+	 
 	ObjectMapper objectMapper = null;
 
 	private static  DataSerializer instance = null;
+	
+	public static final String DEFAULT_FORMAT_DATE = "yyyy-MM-dd HH:mm a z";
 
 
-	private DataSerializer() {
+	private DataSerializer(DataSerializerMapperConfiguration dataSerializerMapperConfiguration) {
 		objectMapper = new ObjectMapper();
-		objectMapper.configure(org.codehaus.jackson.map.DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		objectMapper.setSerializationInclusion(Inclusion.NON_NULL);
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		objectMapper.setSerializationInclusion(Include.NON_NULL);  
 		
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm a z");
+		DateFormat df = new SimpleDateFormat(dataSerializerMapperConfiguration.getFormatDate());
 		objectMapper.setDateFormat(df);
 	}
+	
+	
+	public void setDateFormat(DateFormat df) {
+		objectMapper.setDateFormat(df);
+	}
+
+	
+	
+	private DataSerializer() {
+		this(new DataSerializerMapperConfiguration(DEFAULT_FORMAT_DATE));
+	}
+	
+	public static DataSerializer getInstance(DataSerializerMapperConfiguration dataSerializerMapperConfiguration) {
+		if(instance == null) {
+			instance = new DataSerializer(dataSerializerMapperConfiguration);
+		}
+
+		return instance;
+	}
+
 
 
 	public static DataSerializer getInstance() {
@@ -33,20 +56,27 @@ public class DataSerializer {
 		return instance;
 	}
 
-	public String toJson(Object content) throws HttpConnectionException {
+	public String toJson(Object content)   {
 		try {
 			return objectMapper.writeValueAsString(content);	
 		} catch(Exception e) {
-			throw new HttpConnectionException(R.string.falha_ao_serializar, e);
+			throw new RuntimeException(e);
 		}
-
-	} 
-	
-	public<T>  T toObject(String json, Class targetClass) throws HttpConnectionException {
+	}
+ 
+	public<T>  T toObject(String json, Class targetClass)  {
 		try {
 			return (T) objectMapper.readValue(json, targetClass);	
 		} catch(Exception e) {
-			throw new HttpConnectionException(R.string.falha_ao_serializar, e);
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public<T>  T toObject(String json, final TypeReference<T> type)  {
+		try {
+			return (T) objectMapper.readValue(json, type);	
+		} catch(Exception e) {
+			throw new RuntimeException(e);
 		}
 	}
 

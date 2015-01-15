@@ -2,9 +2,9 @@ package br.com.lvc.googleplaces.model.geocode;
 
 import java.io.Serializable;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-
 import br.com.lvc.googleplaces.model.Localizacao;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LocalizacaoComplementar implements Serializable  {
 

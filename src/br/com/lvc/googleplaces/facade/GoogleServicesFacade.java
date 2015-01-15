@@ -215,14 +215,9 @@ public class GoogleServicesFacade /*extends WebServiceComun */ {
 		Listener<String>  sucessListener = new Response.Listener<String>() {
 
 			@Override
-			public void onResponse(String reponse) {
-				try {
+			public void onResponse(String reponse) { 
 					T data = DataSerializer.getInstance().toObject(reponse, target);
-					responseListener.sucess(data);
-				} catch (HttpConnectionException e) { 
-					e.printStackTrace();
-					responseListener.error("Fail to serialize!");
-				}
+					responseListener.sucess(data); 
 			}
 		};
 
